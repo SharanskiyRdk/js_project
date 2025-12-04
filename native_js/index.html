@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Travel Planner - Планировщик путешествий</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="style.css">
+</head>
+<body>
+<div class="container-fluid">
+  <header class="header py-3 mb-4 border-bottom">
+    <div class="d-flex justify-content-between align-items-center">
+      <h1 class="h3 mb-0">
+        <i class="fas fa-route me-2"></i>Travel Planner
+      </h1>
+      <div class="d-flex align-items-center">
+                    <span id="routeStats" class="badge bg-secondary me-3">
+                        Мест в маршруте: <span id="placesCount">0</span>
+                    </span>
+        <button id="saveRoute" class="btn btn-sm btn-success">
+          <i class="fas fa-save me-1"></i>Сохранить
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="row g-4">
+    <!-- Левая колонка: Поиск -->
+    <div class="col-lg-4">
+      <div class="card search-card">
+        <div class="card-body">
+          <h5 class="card-title mb-3">
+            <i class="fas fa-search me-2"></i>Поиск мест
+          </h5>
+
+          <form id="searchForm" class="mb-4">
+            <div class="input-group">
+              <input type="text"
+                     id="searchInput"
+                     class="form-control"
+                     placeholder="Введите город..."
+                     value="Москва">
+              <button type="submit" class="btn btn-primary">
+                <i class="fas fa-search"></i>
+              </button>
+            </div>
+          </form>
+
+          <div class="mb-3">
+            <label class="form-label">Категория:</label>
+            <select id="categorySelect" class="form-select">
+              <option value="historic">Исторические места</option>
+              <option value="cultural">Культурные объекты</option>
+              <option value="architecture">Архитектура</option>
+              <option value="museums">Музеи</option>
+            </select>
+          </div>
+
+          <button id="loadPlaces" class="btn btn-outline-primary w-100 mb-4">
+            <i class="fas fa-map-marker-alt me-2"></i>Найти достопримечательности
+          </button>
+
+          <div id="loading" class="text-center d-none">
+            <div class="spinner-border text-primary" role="status">
+              <span class="visually-hidden">Загрузка...</span>
+            </div>
+            <p class="mt-2">Ищем интересные места...</p>
+          </div>
+
+          <div id="placesList" class="places-container">
+            <!-- Сюда будут добавляться найденные места -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Центральная колонка: Детали -->
+    <div class="col-lg-4">
+      <div class="card details-card">
+        <div class="card-body">
+          <h5 class="card-title mb-3">
+            <i class="fas fa-info-circle me-2"></i>Информация
+          </h5>
+          <div id="placeDetails" class="text-center text-muted p-5">
+            <i class="fas fa-map-marked-alt fa-3x mb-3"></i>
+            <p>Выберите место из списка, чтобы увидеть подробности</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Правая колонка: Маршрут -->
+    <div class="col-lg-4">
+      <div class="card route-card">
+        <div class="card-body">
+          <h5 class="card-title mb-3">
+            <i class="fas fa-route me-2"></i>Мой маршрут
+          </h5>
+          <p class="text-muted small mb-3">
+            Перетаскивайте места для изменения порядка
+          </p>
+          <div id="routeList" class="route-container">
+            <!-- Сюда будут добавляться места маршрута -->
+            <div class="empty-route text-center text-muted p-5">
+              <i class="fas fa-plus-circle fa-3x mb-3"></i>
+              <p>Добавьте места из списка слева</p>
+            </div>
+          </div>
+          <div id="routeActions" class="mt-3 d-none">
+            <button id="clearRoute" class="btn btn-outline-danger btn-sm">
+              <i class="fas fa-trash me-1"></i>Очистить маршрут
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer mt-5 py-3 border-top text-center text-muted">
+    <small>Travel Planner &copy; 2025. Js project.</small>
+  </footer>
+</div>
+
+<script src="script.js" type="module"></script>
+</body>
+</html>
